@@ -1,0 +1,14 @@
+{
+    "rabbit": {
+        "host": "host.com",
+        "port": 1234,
+        "login": "user",
+        "pass": "pass",
+        "vhost": "some"
+    },
+    "webservice": {
+        "api_address" : "http://ad.dr/api",
+        "login": "login",
+        "pass": "pass"
+    }    
+}
