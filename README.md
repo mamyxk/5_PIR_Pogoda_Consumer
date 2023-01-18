@@ -2,5 +2,7 @@
 
 # Wymagane pakiety
 
+```
 pip install pika
 pip install requests
+```
