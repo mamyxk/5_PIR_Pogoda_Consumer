@@ -12,9 +12,10 @@ def rabbit_callback(ch, method, properties, body):
         api_addr = config['webservice']['api_address']
         print(f'{api_addr}')
         recv = json.loads(body)
-        resp = requests.post(f'{api_addr}/add_sensor_log')
-        print(resp.text)
+        resp = requests.post(f'{api_addr}/add_sensor_log',data=recv)
+
         print(f"Received message: {recv}")
+        print(resp.text)
 
     except json.decoder.JSONDecodeError as err:
         print(f"An error occured: {err}")
