@@ -1,19 +1,28 @@
 import json
 import pika
+import requests
 
+
+config = None
+with open('app.conf.json') as json_file:
+    config = json.load(json_file)
 
 def rabbit_callback(ch, method, properties, body):
     try:
+        api_addr = config['webservice']['api_address']
+        print(f'{api_addr}')
         recv = json.loads(body)
+        resp = requests.post(f'{api_addr}/add_sensor_log')
+        print(resp)
         print(f"Received message: {recv}")
+
     except json.decoder.JSONDecodeError as err:
         print(f"An error occured: {err}")
 
 if __name__ == '__main__':
     try:
-        config = None
-        with open('app.conf.json') as json_file:
-            config = json.load(json_file)
+        
+        # global API_ADDRESS = config['webservice']['api_address']
         print(config)
 
         rabbit_credentials = pika.PlainCredentials(
