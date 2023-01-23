@@ -13,7 +13,7 @@ def rabbit_callback(ch, method, properties, body):
         print(f'{api_addr}')
         recv = json.loads(body)
         resp = requests.post(f'{api_addr}/add_sensor_log')
-        print(resp)
+        print(resp.text)
         print(f"Received message: {recv}")
 
     except json.decoder.JSONDecodeError as err:
